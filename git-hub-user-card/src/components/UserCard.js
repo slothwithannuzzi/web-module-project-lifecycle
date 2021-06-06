@@ -6,6 +6,7 @@ class UserCard extends React.Component {
         return (
             <div>
                 <h1>User: {this.props.username}</h1>
+                <img src = {this.props.userImg}></img>
             </div>
         )
     }

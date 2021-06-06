@@ -23,17 +23,17 @@ class UserForm extends React.Component {
         this.props.getUser(this.state.user);
         this.setState({
             ...this.state,
-            user: ''
+            user: ""
         })
     }
    
     render() {
         return (
             <div>
-                <form>
+                <form onSubmit = {this.handleSubmit}>
                     <label>Input Username: </label>
-                    <input type = 'text' onChange = {this.handleChange}/>
-                    <button onClick = {this.handleSubmit}>Submit</button>
+                    <input type = 'text' value ={this.state.user} onChange = {this.handleChange}/>
+                    <button>Submit</button>
                 </form>
             </div>
         )

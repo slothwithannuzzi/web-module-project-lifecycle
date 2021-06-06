@@ -11,7 +11,8 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      user: {}
+      user: {},
+      validUser: false
     }
   }
 
@@ -31,20 +32,40 @@ class App extends React.Component {
         console.log(res.data)
         this.setState({
           ...this.state,
-          user: res.data
+          user: res.data,
+          validUser: true
         })
         })
       .catch(err => console.log('invalid user', err))
     }
   
-  
+    isValid = () => {
+      if(this.state.validUser) {
+        return (
+          <div>
+            <UserCard username = {this.state.user.login} userImg = {this.state.user.avatar_url} />
+            <button onClick = {this.clearUser}>Clear User</button>
+          </div>
+        )
+      }
+    }
+
+    clearUser = () => {
+      this.setState({
+        ...this.state,
+        user: {},
+        validUser: false
+      })
+    }
   
   
   render() {
     return (
     <div className="App">
-        <UserForm getUser = {this.getUser}/>
-        <UserCard username = {this.state.user.login}/>
+        <UserForm getUser = {this.getUser} />
+        { 
+          this.isValid()
+        }
     </div>
   )
     }
