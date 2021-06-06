@@ -29,3 +29,16 @@
 .user-info p {
     font-size: 14px;
 }
+
+.follower-list {
+    width: 300px;
+    display:flex;
+    flex-wrap: wrap;
+    margin:1rem;
+}
+
+.follower-card {
+    width: 148px;
+    border: 1px solid black;
+    font-size: 12px;
+}

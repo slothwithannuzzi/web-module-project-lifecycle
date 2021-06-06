@@ -3,13 +3,13 @@ import React from 'react'
 
 class FollowerList extends React.Component {
 
-    
     render() {
         return (
-            <div>
-                Followers:
+            <div className = 'follower-list'>
                 {this.props.list.map(follower => (
-                    <div>{follower.login}</div>
+                    <div className = 'follower-card' key = {follower.id}>
+                        {follower.login}
+                    </div>
                 ))}
             </div>
         )

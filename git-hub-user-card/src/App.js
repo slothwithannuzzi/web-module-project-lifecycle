@@ -63,6 +63,8 @@ class App extends React.Component {
             followerCount = {this.state.user.followers}
             followingCount = {this.state.user.following}
             followerList = {this.state.followerList}
+            getUser = {this.getUser}
+            getFollowers = {this.getFollowers}
             />
             <button onClick = {this.clearUser}>Clear User</button>
           </div>

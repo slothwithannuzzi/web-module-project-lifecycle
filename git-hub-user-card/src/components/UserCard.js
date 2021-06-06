@@ -24,7 +24,11 @@ class UserCard extends React.Component {
         if(this.state.showFollowers) {
             return (
                 <div>
-                    <FollowerList list = {this.props.followerList}/>
+                    <FollowerList 
+                    list = {this.props.followerList} 
+                    getUser = {this.props.getUser}
+                    getFollowers = {this.props.getFollowers}
+                    />
                 </div>
             )
         }
