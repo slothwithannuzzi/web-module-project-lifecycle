@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import React from 'react'
 import axios from 'axios'
 import UserCard from './components/UserCard'
@@ -47,6 +47,9 @@ class App extends React.Component {
             username = {this.state.user.login} 
             userImg = {this.state.user.avatar_url} 
             url = {this.state.user.url}
+            bio = {this.state.user.bio}
+            followerCount = {this.state.user.followers}
+            followingCount = {this.state.user.following}
             />
             <button onClick = {this.clearUser}>Clear User</button>
           </div>
