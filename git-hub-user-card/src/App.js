@@ -42,8 +42,12 @@ class App extends React.Component {
     isValid = () => {
       if(this.state.validUser) {
         return (
-          <div>
-            <UserCard username = {this.state.user.login} userImg = {this.state.user.avatar_url} />
+          <div className = 'card-container'>
+            <UserCard 
+            username = {this.state.user.login} 
+            userImg = {this.state.user.avatar_url} 
+            url = {this.state.user.url}
+            />
             <button onClick = {this.clearUser}>Clear User</button>
           </div>
         )
