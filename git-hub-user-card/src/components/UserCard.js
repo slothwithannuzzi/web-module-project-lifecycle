@@ -1,33 +1,34 @@
 import React from 'react'
 import axios from 'axios'
 import '../styles/UserCard.css'
-import Followers from './FollowerList'
+import FollowerList from './FollowerList'
 
 class UserCard extends React.Component {
     
     constructor () {
         super();
         this.state = {
-            followers: false
+
+            showFollowers: false
         }
     }
 
-    // toggleFollowers = () => {
-    //     this.setState = {
-    //         ...this.state,
-    //         followers: true
-    //     }
-    // }
+    toggleFollowers = () => {
+        this.setState ({
+            ...this.state,
+            showFollowers: !this.state.showFollowers
+        })
+    }
 
-    // showFollowers = () => {
-    //     if(this.state.followers === true) {
-    //         return (
-    //             <div>
-    //             <Followers />
-    //             </div>
-    //         )
-    //     }
-    // }
+    showFollowers = () => {
+        if(this.state.showFollowers) {
+            return (
+                <div>
+                    <FollowerList list = {this.props.followerList}/>
+                </div>
+            )
+        }
+    }
 
     
     render() {
@@ -46,8 +47,8 @@ class UserCard extends React.Component {
                 <div className = 'bio'>
                     <p>{this.props.bio}</p>
                 </div>
-                {/* <button onClick = {this.toggleFollowers}>Show Followers</button>
-                {this.showFollowers()} */}
+                <button onClick = {this.toggleFollowers}>Followers</button>
+                {this.showFollowers()}
             </div>
         )
     }

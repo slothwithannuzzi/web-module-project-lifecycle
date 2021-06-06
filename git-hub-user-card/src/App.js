@@ -12,6 +12,7 @@ class App extends React.Component {
     super();
     this.state = {
       user: {},
+      followerList: [],
       validUser: false
     }
   }
@@ -37,6 +38,18 @@ class App extends React.Component {
         })
       .catch(err => console.log('invalid user', err))
     }
+
+    getFollowers = user => {
+      axios.get(`https://api.github.com/users/${user}/followers`)
+      .then(res => {
+          this.setState({
+            ...this.state,
+            followerList: res.data
+          })
+          })
+        .catch(err => console.log('invalid user', err))
+        console.log(this.state.followerList)
+  }
   
     isValid = () => {
       if(this.state.validUser) {
@@ -49,7 +62,7 @@ class App extends React.Component {
             bio = {this.state.user.bio}
             followerCount = {this.state.user.followers}
             followingCount = {this.state.user.following}
-            getFollowers = {this.getFollowers}
+            followerList = {this.state.followerList}
             />
             <button onClick = {this.clearUser}>Clear User</button>
           </div>
@@ -69,7 +82,10 @@ class App extends React.Component {
   render() {
     return (
     <div className="App">
-        <UserForm getUser = {this.getUser}/>
+        <UserForm 
+        getUser = {this.getUser} 
+        getFollowers = {this.getFollowers}
+        />
         { 
           this.isValid()
         }

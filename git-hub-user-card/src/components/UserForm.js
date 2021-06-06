@@ -20,6 +20,7 @@ class UserForm extends React.Component {
         e.preventDefault();
         console.log('submitting');
         this.props.getUser(this.state.user);
+        this.props.getFollowers(this.state.user);
         this.setState({
             ...this.state,
             user: ""
