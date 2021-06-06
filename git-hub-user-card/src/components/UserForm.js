@@ -14,7 +14,6 @@ class UserForm extends React.Component {
             ...this.state,
             user: e.target.value
         });
-        console.log(this.state.user)
     }
 
     handleSubmit = e => {

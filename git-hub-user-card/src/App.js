@@ -18,9 +18,9 @@ class App extends React.Component {
 
   componentDidMount() {
     console.log('App running')
-    axios.get(`https://api.github.com/users/slothwithannuzzi`)
+    axios.get(`https://api.github.com/users/slothwithannuzzi/followers`)
     .then(res => {
-        console.log(res.data)
+        // console.log(res.data)
         })
     .catch(err => console.log(err))
     }
@@ -29,7 +29,6 @@ class App extends React.Component {
   getUser = (user) => {
     axios.get(`https://api.github.com/users/${user}`)
     .then(res => {
-        console.log(res.data)
         this.setState({
           ...this.state,
           user: res.data,
@@ -50,6 +49,7 @@ class App extends React.Component {
             bio = {this.state.user.bio}
             followerCount = {this.state.user.followers}
             followingCount = {this.state.user.following}
+            getFollowers = {this.getFollowers}
             />
             <button onClick = {this.clearUser}>Clear User</button>
           </div>
@@ -69,7 +69,7 @@ class App extends React.Component {
   render() {
     return (
     <div className="App">
-        <UserForm getUser = {this.getUser} />
+        <UserForm getUser = {this.getUser}/>
         { 
           this.isValid()
         }
